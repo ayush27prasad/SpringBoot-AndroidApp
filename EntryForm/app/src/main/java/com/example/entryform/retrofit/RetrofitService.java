@@ -9,13 +9,10 @@ public class RetrofitService {
     public RetrofitService(){
         initializeRetrofit();
     }
-    private  String ip = "192.168.132";
-    private  String pn = "9000";
-
 
     private void initializeRetrofit() {
     retrofit = new Retrofit.Builder()
-            .baseUrl("http://"+ip+":"+pn)
+            .baseUrl("http://192.168.8.180:9000")
             .addConverterFactory(GsonConverterFactory.create(new Gson()))
             .build();
     }

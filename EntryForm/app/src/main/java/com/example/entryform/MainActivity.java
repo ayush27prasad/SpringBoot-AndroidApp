@@ -15,6 +15,9 @@ import com.example.entryform.retrofit.EmployeeApi;
 import com.example.entryform.retrofit.RetrofitService;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,11 +53,14 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Employee> call, Response<Employee> response) {
                             Snackbar.make(findViewById(content), "Saved Successfully!", Snackbar.LENGTH_SHORT).show();
+//                            Toast.makeText(MainActivity.this,"Saved Successfully!",Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFailure(Call<Employee> call, Throwable t) {
+//                            Toast.makeText(MainActivity.this,"Save failed!",Toast.LENGTH_SHORT).show();
                             Snackbar.make(findViewById(content), "Couldn't save, try agin!", Snackbar.LENGTH_SHORT).show();
+                            Logger.getLogger(MainActivity.class.getName()).log(Level.SEVERE,"Error occured",t);
                         }
                     });
         });
